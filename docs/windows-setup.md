@@ -78,11 +78,13 @@ Files under `/mnt/c/...` (your Windows drives) are slow and can lose their permi
 
 ```bash
 sudo apt update && sudo apt install -y unzip
-cp /mnt/c/Users/YourName/Downloads/K8s-Incident-Lab-*.zip ~/
+cp /mnt/c/Users/YourName/Downloads/K8s-Troubleshooting-Lab-*.zip ~/
 cd ~
-unzip K8s-Incident-Lab-*.zip
-cd K8s-Incident-Lab-*/
+unzip K8s-Troubleshooting-Lab-*.zip
+cd K8s-Troubleshooting-Lab-*/
 ```
+
+Unzip inside Ubuntu as shown. Do not copy the folder through Git for Windows, or save the scripts from a Windows editor with "CRLF" line endings, because that breaks them (see the first row of the troubleshooting table).
 
 ## 8. Run the lab
 ```bash
@@ -110,6 +112,7 @@ Then run `wsl --shutdown` in PowerShell and start Docker Desktop again.
 ## Troubleshooting
 | Problem | Likely cause | Fix |
 | --- | --- | --- |
+| `env: 'bash\r': No such file or directory` when you run `./lab.sh` | The scripts were saved with Windows (CRLF) line endings, usually by Git for Windows (`core.autocrlf`) or an editor set to CRLF | Convert them back, from the lab folder in Ubuntu: `find . -path ./.git -prune -o -type f \( -name '*.sh' -o -name '*.yaml' -o -name '*.yml' -o -name '*.md' -o -name '*.txt' -o -name '.edition' -o -name VERSION \) -exec sed -i 's/\r$//' {} +` then run `./lab.sh doctor` again. In VS Code set the status-bar "CRLF" to "LF" for any file you edit; in Git run `git config --global core.autocrlf input` and re-clone |
 | `wsl --install` only prints help text | WSL is already installed, or Windows is old | Run `wsl --install -d Ubuntu`; on Windows 10 make sure updates are installed |
 | "Virtualization is disabled" or WSL 2 will not start | Virtualisation is off in the BIOS | Turn on Intel VT-x / AMD-V (SVM) in the BIOS, then retry |
 | `docker: command not found` in Ubuntu | WSL integration is off | Docker Desktop, Settings, Resources, WSL integration: switch Ubuntu on, Apply & restart |

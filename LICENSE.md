@@ -1,6 +1,6 @@
 # Free Sample Licence
 
-**DecodingDevOps Kubernetes Incident Lab: Free Sample (incidents 01 and 02)**
+**DecodingDevOps Kubernetes Troubleshooting Lab: Free Sample (incidents 01 and 02)**
 
 Copyright (c) 2026 DecodingDevOps.
 

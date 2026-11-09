@@ -1,0 +1,7 @@
+# Keep Unix line endings on every platform so the scripts run in WSL/Linux/macOS.
+* text=auto eol=lf
+*.sh text eol=lf
+*.png binary
+*.mp4 binary
+*.mov binary
+*.zip binary

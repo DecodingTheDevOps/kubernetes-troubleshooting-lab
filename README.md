@@ -1,8 +1,8 @@
-# Kubernetes Incident Lab: hands-on Kubernetes troubleshooting practice
+# Kubernetes Troubleshooting Lab: hands-on Kubernetes troubleshooting practice
 
 **Break a real cluster, find the cause, fix it, and let a validator prove you did.** This free sample gives you two Kubernetes troubleshooting incidents that run on a local [kind](https://kind.sigs.k8s.io/) cluster on your own laptop. No cloud account, no cost, no video to sit through.
 
-![Kubernetes Incident Lab: you can deploy to Kubernetes, can you fix it when it breaks?](assets/social-preview-1280x640.png)
+![Kubernetes Troubleshooting Lab: you can deploy to Kubernetes, can you fix it when it breaks?](assets/social-preview-1280x640.png)
 
 ```text
 $ ./lab.sh start 1
@@ -65,7 +65,7 @@ Run the lab: it creates a three-node cluster inside Docker on your computer with
 Troubleshooting is a large part of the CKA exam, and these incidents exercise the same `kubectl` investigation skills. It is practice material, not official exam content.
 
 **Which versions does it use?**
-It was tested with kind v0.18.0 (Kubernetes v1.26.3), Docker and kubectl. Newer kind versions normally work but start a newer Kubernetes that has not been tested.
+It was tested with kind v0.18.0 (Kubernetes v1.34.x), Docker and kubectl. Newer kind versions normally work but start a newer Kubernetes that has not been tested.
 
 **Something doesn't work. Where do I ask?**
 Open an issue and include the output of `./lab.sh doctor`.

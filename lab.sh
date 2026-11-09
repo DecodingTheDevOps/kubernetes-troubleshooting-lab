@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copyright (c) 2026 DecodingDevOps. Free sample, see LICENSE.md.
-# Kubernetes Incident Lab — command line entry point.
+# Kubernetes Troubleshooting Lab — command line entry point.
 # Works with bash 3.2+ (macOS default) and any newer bash. Run ./lab.sh help.
 set -euo pipefail
 
@@ -155,7 +155,7 @@ doctor() {
   ok()   { echo "  [ok]   $*"; }
   no()   { echo "  [FAIL] $*"; bad=$((bad + 1)); }
   meh()  { echo "  [warn] $*"; warn=$((warn + 1)); }
-  echo "Kubernetes Incident Lab $(version) — $(edition_name) edition — environment check"
+  echo "Kubernetes Troubleshooting Lab $(version) — $(edition_name) edition — environment check"
   echo
   echo "Tools"
   if command -v docker >/dev/null; then ok "docker: $(docker --version 2>/dev/null)"; else no "docker not found (see README: Install the tools)"; fi
@@ -398,7 +398,7 @@ summary() {
   mkdir -p "$ROOT/.lab"
   out="$ROOT/.lab/completion-summary.md"; json="$ROOT/.lab/completion-summary.json"
   {
-    echo "# Kubernetes Incident Lab — Completion Summary"
+    echo "# Kubernetes Troubleshooting Lab — Completion Summary"
     echo
     echo "- Learner: $name"
     echo "- Edition: $(edition_name) (v$(version))"
@@ -441,15 +441,15 @@ shell() {
     echo 'PS1="(incident-lab) ${PS1:-\\$ }"'
     echo 'alias k=kubectl'
   } > "$rcfile"
-  echo "Entering the Kubernetes Incident Lab shell (your own bash settings are kept)."
+  echo "Entering the Kubernetes Troubleshooting Lab shell (your own bash settings are kept)."
   echo "kubectl in this shell talks ONLY to the lab cluster. Type 'exit' to leave."
   echo
   # The shell's own exit status (the last command typed) must not make lab.sh fail.
   BASH_SILENCE_DEPRECATION_WARNING=1 bash --rcfile "$rcfile" -i || true
   rm -f "$rcfile"
 }
-shell_env() { guard; printf 'export KUBECONFIG=%q\n' "$KCFG"; printf 'export KUBE_CONTEXT=%q\n' "$CTX"; printf 'echo "Kubernetes Incident Lab: %s"\n' "$CTX"; }
-shell_unset() { printf 'unset KUBECONFIG\nunset KUBE_CONTEXT\necho "Kubernetes Incident Lab environment disabled."\n'; }
+shell_env() { guard; printf 'export KUBECONFIG=%q\n' "$KCFG"; printf 'export KUBE_CONTEXT=%q\n' "$CTX"; printf 'echo "Kubernetes Troubleshooting Lab: %s"\n' "$CTX"; }
+shell_unset() { printf 'unset KUBECONFIG\nunset KUBE_CONTEXT\necho "Kubernetes Troubleshooting Lab environment disabled."\n'; }
 shell_status() { guard; echo "Context: $CTX"; echo "Kubeconfig: $KCFG"; k get nodes; }
 
 destroy() {
@@ -460,7 +460,7 @@ destroy() {
 
 usage() {
   cat <<EOF
-Kubernetes Incident Lab $(version) — $(edition_name) edition
+Kubernetes Troubleshooting Lab $(version) — $(edition_name) edition
 
   ./lab.sh setup                 create the local kind cluster and load images
   ./lab.sh doctor                check Docker, tools, memory and the cluster

@@ -4,6 +4,7 @@ Start with `./lab.sh doctor`. It checks Docker, `kubectl`, `kind`, memory and th
 
 | Symptom | Likely cause | What to do |
 | --- | --- | --- |
+| `env: 'bash\r': No such file or directory` (Windows) | Scripts have CRLF line endings | In the Ubuntu terminal, in the lab folder: `find . -path ./.git -prune -o -type f \( -name '*.sh' -o -name '*.yaml' -o -name '*.yml' -o -name '*.md' -o -name '*.txt' -o -name '.edition' -o -name VERSION \) -exec sed -i 's/\r$//' {} +`. Details in `docs/windows-setup.md` |
 | `Cannot connect to the Docker daemon` | Docker is not running | Start Docker Desktop / Colima / the Docker service |
 | Windows: anything not working | Windows needs WSL2 and Docker Desktop set up first | Follow `docs/windows-setup.md` and run the lab from an Ubuntu terminal |
 | `setup` hangs on image pulls | Slow or blocked registry access | Retry; images are listed in `platform/images.txt` and can be pulled manually, then `kind load docker-image` |
